@@ -1,0 +1,11 @@
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+.center-this {
+  width: 100%;
+  text-align: center;
+}
+
+.button-padding {
+  margin: 10px 0px 10px 0px;
+}
