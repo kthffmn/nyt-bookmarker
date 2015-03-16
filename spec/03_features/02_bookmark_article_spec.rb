@@ -1,4 +1,4 @@
-describe "Bookmark Article" do
+describe "Bookmarking Articles" do
 
   let(:name)   { 'Lucretia Mott' }
   let(:avatar) { 'http://www.rschindler.com/mott.jpg' }
@@ -30,6 +30,7 @@ describe "Bookmark Article" do
   end
 
   it "allows user to click 'Mark as Read' and then 'Submit'" do
+    original_article_count = user.articles.count
     last_bookmark = Bookmark.last
     click_link('View Articles')
     choose('Mark as read', :match => :first)
@@ -40,6 +41,7 @@ describe "Bookmark Article" do
     expect(latest_bookmark).to_not eq(last_bookmark)
     expect(latest_bookmark.user_id).to eq(user.id)
     expect(latest_bookmark.read).to eq(true)
+    expect(user.articles.count).to eq(original_article_count + 1)
 
     expect(page).to have_content(latest_bookmark.article.title)
     expect(page).to have_content(latest_bookmark.article.byline)
@@ -47,6 +49,7 @@ describe "Bookmark Article" do
   end
 
   it "allows user to click 'Add to List' and then 'Submit'" do
+    original_article_count = user.articles.count
     last_bookmark = Bookmark.last
     click_link('View Articles')
     choose('Add to list', :match => :first)
@@ -57,6 +60,7 @@ describe "Bookmark Article" do
     expect(latest_bookmark).to_not eq(last_bookmark)
     expect(latest_bookmark.user_id).to eq(user.id)
     expect(latest_bookmark.read).to eq(false)
+    expect(user.articles.count).to eq(original_article_count + 1)
 
     expect(page).to have_content(latest_bookmark.article.title)
     expect(page).to have_content(latest_bookmark.article.byline)
