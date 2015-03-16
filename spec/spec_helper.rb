@@ -17,6 +17,7 @@ RSpec.configure do |config|
   config.after(:all) do
     run_rake_task('db:drop')
     run_rake_task('db:migrate')
+    run_rake_task('db:seed')
   end
 end
 

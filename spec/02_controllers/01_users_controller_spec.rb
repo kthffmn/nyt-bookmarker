@@ -29,6 +29,11 @@ describe UsersController do
           expect(last_response.body).to include(html)
         end
       end
+
+      it "displays the user's avatar in a img tag with a class of 'avatar'" do
+        visit "/users/#{user.id}"
+        expect(page.find('.avatar')['src']).to eq(attributes[:avatar])
+      end
     end
 
     describe "#new" do

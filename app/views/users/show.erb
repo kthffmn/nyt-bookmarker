@@ -17,6 +17,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a class="navbar-brand"><%= @user.name %></a><li>
+        <li><a class="navbar-brand" href="/users/<%= @user.id %>/edit">Edit Profile</a><li>
         <li>
           <a>
             <form action="/users/<%= @user.id %>" method="post">
@@ -26,7 +27,7 @@
           </a>
         </li>
         <li>
-          <img src="<%= @user.avatar %>" width="50px" height="50px">
+          <img src="<%= @user.avatar %>" width="50px" height="50px" class="avatar">
         </li>
       </ul>
     </div><!--/.nav-collapse -->
@@ -57,7 +58,7 @@
           <div class="col-md-2">
             <form action="/bookmarks/<%= bookmark.id %>" method="post">
               <input type="hidden" name="_method" value="patch">
-              <input type="hidden" name="bookmark[read?]" value="true">
+              <input type="hidden" name="bookmark[read]" value="true">
               <input type="submit" value="Mark as Read" class="btn btn-default btn-sm">
             </form>
           </div>
@@ -94,7 +95,7 @@
           <div class="col-md-2">
             <form action="/bookmarks/<%= bookmark.id %>" method="post">
               <input type="hidden" name="_method" value="patch">
-              <input type="hidden" name="bookmark[read?]" value="false">
+              <input type="hidden" name="bookmark[read]" value="false">
               <input type="submit" value="Mark as Unread" class="btn btn-default btn-sm">
             </form>
           </div>
