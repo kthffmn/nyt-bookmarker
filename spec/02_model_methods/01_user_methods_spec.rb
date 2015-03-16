@@ -11,16 +11,20 @@ describe User do
     @read_bookmarks = [first_read_bm, second_read_bm]
   end
 
-  it "knows about all the articles it has read" do
-    expect { @user.read_bookmarks }.to_not raise_error
-    expect(@user.read_bookmarks.length).to eq(@read_bookmarks.length)
-    @read_bookmarks.each { |bm| expect(@user.read_bookmarks).to include(bm) }
-    expect(@user.read_bookmarks).to_not include(@unread_bm)
+  describe "#read_bookmarks" do
+    it "knows about all the articles it has read" do
+      expect { @user.read_bookmarks }.to_not raise_error
+      expect(@user.read_bookmarks.length).to eq(@read_bookmarks.length)
+      @read_bookmarks.each { |bm| expect(@user.read_bookmarks).to include(bm) }
+      expect(@user.read_bookmarks).to_not include(@unread_bm)
+    end
   end
 
-  it "knows about all the articles it has bookmarked but hasn't read" do
-    expect { @user.unread_bookmarks }.to_not raise_error
-    expect(@user.unread_bookmarks).to include(@unread_bm)
-    @read_bookmarks.each { |bm| expect(@user.unread_bookmarks).to_not include(bm) }
+  describe "#unread_bookmarks" do
+    it "knows about all the articles it has bookmarked but hasn't read" do
+      expect { @user.unread_bookmarks }.to_not raise_error
+      expect(@user.unread_bookmarks).to include(@unread_bm)
+      @read_bookmarks.each { |bm| expect(@user.unread_bookmarks).to_not include(bm) }
+    end
   end
 end

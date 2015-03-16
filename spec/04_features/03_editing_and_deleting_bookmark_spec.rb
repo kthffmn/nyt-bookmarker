@@ -1,4 +1,4 @@
-describe "Editing Bookmarks" do
+describe "Editing and Deleting Bookmarks" do
   before(:all) do
     @user = User.create(
       :name => 'David Walker', 
