@@ -63,6 +63,7 @@ describe "Editing Bookmarks" do
     expect(page).to have_selector("input[type='submit'][value='Remove']")
     click_button('Remove', :match => :first)
 
+    expect(URI.parse(current_url).path).to eq("/users/#{@user.id}")
     expect(@user.bookmarks.count).to eq(original_count - 1)
   end
 end
