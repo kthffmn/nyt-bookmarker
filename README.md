@@ -20,10 +20,10 @@ resources: 1
 
 ## Quick Set Up
 
-This lab uses a database called `article_curator`. Go ahead and create that now:
+This lab uses a database called `bookmarker`. Go ahead and create that now:
 
 ```
-> createdb article_curator
+> createdb bookmarker
 ```
 
 This lab uses a key from the New York Times to seed the database with articles. 

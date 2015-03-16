@@ -20,7 +20,7 @@ class BookmarksController < ApplicationController
     end
   end
 
-  delete '/bookmarks/:id/destroy' do
+  delete '/bookmarks/:id' do
     @bookmark = Bookmark.find(params[:id])
     @user = @bookmark.user
     if @bookmark.delete

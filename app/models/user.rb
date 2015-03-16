@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   end
 
   def bookmarks_read_eq(boolean)
-    self.bookmarks.where(:read? => boolean)
+    self.bookmarks.where(:read => boolean)
   end
 
   def read_bookmarks

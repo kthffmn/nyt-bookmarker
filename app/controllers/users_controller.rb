@@ -33,10 +33,10 @@ class UsersController < ApplicationController
     erb :'users/edit'
   end
 
-  delete '/users/:id/destroy' do
+  delete '/users/:id' do
     @user = User.find(params[:id])
     if @user.destroy
-      redirect "/users"
+      redirect "/"
     else
       erb :"users/#{@user.id}"
     end
