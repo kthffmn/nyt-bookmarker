@@ -1,39 +1,3 @@
-<!-- Static navbar -->
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">Article Bookmarker</a>
-    </div>
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-        <li><a href="/">Home</a></li>
-        <li><a href="/users/<%= @user.id %>/articles">View Articles</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a class="navbar-brand"><%= @user.name %></a><li>
-        <li><a class="navbar-brand" href="/users/<%= @user.id %>/edit">Edit Profile</a><li>
-        <li>
-          <a>
-            <form action="/users/<%= @user.id %>" method="post">
-              <input type="hidden" name="_method" value="delete">
-              <input type="submit" value="Delete Your Account" class="btn btn-default">
-            </form>
-          </a>
-        </li>
-        <li>
-          <img src="<%= @user.avatar %>" width="50px" height="50px" class="avatar">
-        </li>
-      </ul>
-    </div><!--/.nav-collapse -->
-  </div><!--/.container-fluid -->
-</nav>
-
 <h3>Bookmarked Articles</h3>
 <% if @user.has_unread_bookmarks? %>
   <div class="row">
@@ -69,6 +33,7 @@
   </div>
 <% else %>
   <p>You don't have any bookmarked articles.</p>
+  <p><a class="btn btn-default" href="/users/<%= @user.id %>/articles">Add Articles</a></p>
 <% end %>
 
 <h3>Read Articles</h3>
@@ -105,6 +70,9 @@
   </div>
 <% else %>
   <p>You don't have any read articles.</p>
+  <p><a class="btn btn-default" href="/users/<%= @user.id %>/articles">Add Articles</a></p>
+
 <% end %>
 
-<br>
+
+

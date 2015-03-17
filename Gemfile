@@ -10,6 +10,7 @@ gem 'pry'
 gem 'shotgun'
 gem 'dotenv'
 gem 'font-awesome-sass'
+gem "better_errors"
 
 group :test do
   gem 'rspec'

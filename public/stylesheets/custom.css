@@ -9,3 +9,8 @@
 .button-padding {
   margin: 10px 0px 10px 0px;
 }
+
+.submitLink {
+  background-color: transparent;
+  border: none;
+}

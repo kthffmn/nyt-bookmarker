@@ -1,29 +1,3 @@
-<!-- Static navbar -->
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">Article Bookmarker</a>
-    </div>
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-        <li><a href="/">Home</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a class="navbar-brand" href="/users/<%= @user.id %>"><%= @user.name %></a><li>
-        <li>
-          <img src="<%= @user.avatar %>" width="50px" height="50px">
-        </li>
-      </ul>
-    </div><!--/.nav-collapse -->
-  </div><!--/.container-fluid -->
-</nav>
-
 <% @user.unread_articles.each_with_index do |article, i| %>
   <% if i % 3 == 0 %>
     <div class="row">
