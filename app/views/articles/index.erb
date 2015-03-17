@@ -1,1 +1,64 @@
-<h1>Create your articles/index erb template here</h1>
+<!-- Static navbar -->
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Article Bookmarker</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="/">Home</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a class="navbar-brand" href="/users/<%= @user.id %>"><%= @user.name %></a><li>
+        <li>
+          <img src="<%= @user.avatar %>" width="50px" height="50px">
+        </li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container-fluid -->
+</nav>
+
+<% @user.unread_articles.each_with_index do |article, i| %>
+  <% if i % 3 == 0 %>
+    <div class="row">
+  <% end %>
+  <div class="col-md-4">
+    <div class="center-this">
+      <a target="_blank" href="<%= article.url %>">
+        <img src="/images/article-<%= article.id%4 + 1 %>.jpg">
+        <h2><%= article.title %></h2>
+      </a>
+      <p>Byline: <%= article.byline %></p>
+      <p>Abstract: <%= article.abstract %></p>
+      <form action="/bookmarks" method="post">
+        <input type="hidden" name="bookmark[user_id]" value="<%= @user.id %>">
+        <input type="hidden" name="bookmark[article_id]" value="<%= article.id %>">
+        <div class="form-group">
+          <div class="radio-inline">
+            <label>
+              <input type="radio" name="bookmark[read]" value="true">
+              Mark as read
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              <input type="radio" name="bookmark[read]" value="false">
+              Add to list
+            </label>
+          </div>
+          <input type="submit" value="Submit" class="btn btn-default">
+        </div>
+      </form>
+      <br>
+    </div>
+  </div>
+  <% if i % 3 == 2 %>
+    </div>
+  <% end %>
+<% end %>

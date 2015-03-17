@@ -1,3 +1,8 @@
 class CreateUsers < ActiveRecord::Migration
-  # code your migration here
+  def change
+    create_table :users do |t|
+      t.string :name
+      t.string :avatar
+    end
+  end
 end

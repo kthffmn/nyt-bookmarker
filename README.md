@@ -49,9 +49,9 @@ Now save your `.env` file and run `bundle install`.
 
 The focus of this lab to curate lists of articles to read for users. People who log in should be able to save or bookmark *New York Times* articles to read for later. They should also be able to mark articles as read.
 
-*View the clip below to see what you're going for.*
+View the clip below to see what you're going for.
 
-[Download video](http://s3-us-west-2.amazonaws.com/web-dev-readme-photos/sinatra/nyt-article-bookmarker.mp4)
+[MP4](http://s3-us-west-2.amazonaws.com/web-dev-readme-photos/sinatra/nyt-article-bookmarker.mp4)
 
 ## Instructions
 

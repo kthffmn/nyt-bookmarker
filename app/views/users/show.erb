@@ -1,1 +1,110 @@
-<h1>Create your users/show erb template here</h1>
+<!-- Static navbar -->
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Article Bookmarker</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="/">Home</a></li>
+        <li><a href="/users/<%= @user.id %>/articles">View Articles</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a class="navbar-brand"><%= @user.name %></a><li>
+        <li><a class="navbar-brand" href="/users/<%= @user.id %>/edit">Edit Profile</a><li>
+        <li>
+          <a>
+            <form action="/users/<%= @user.id %>" method="post">
+              <input type="hidden" name="_method" value="delete">
+              <input type="submit" value="Delete Your Account" class="btn btn-default">
+            </form>
+          </a>
+        </li>
+        <li>
+          <img src="<%= @user.avatar %>" width="50px" height="50px" class="avatar">
+        </li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container-fluid -->
+</nav>
+
+<h3>Bookmarked Articles</h3>
+<% if @user.has_unread_bookmarks? %>
+  <div class="row">
+    <% @user.unread_bookmarks.each_with_index do |bookmark, i| %> 
+      <div class="col-md-4">
+        <a href="<%= bookmark.article.url %>" target="_blank" >
+          <img src="/images/article-<%= bookmark.article.id%4 + 1 %>.jpg">
+          <h4><%= bookmark.article.title %></h4>
+        </a>
+        <ul>
+          <li>Byline: <%= bookmark.article.byline %></li>
+          <li>Abstract: <%= bookmark.article.abstract %></li>
+        </ul>
+        <div class="row">
+          <div class="col-md-1"></div>
+          <div class="col-md-2">
+            <form action="/bookmarks/<%= bookmark.id %>" method="post">
+              <input type="hidden" name="_method" value="delete">
+              <input type="submit" value="Remove" class="btn btn-default btn-sm">
+            </form>
+          </div>
+          <div class="col-md-2">
+            <form action="/bookmarks/<%= bookmark.id %>" method="post">
+              <input type="hidden" name="_method" value="patch">
+              <input type="hidden" name="bookmark[read]" value="true">
+              <input type="submit" value="Mark as Read" class="btn btn-default btn-sm">
+            </form>
+          </div>
+          <div class="col-md-4"></div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <p>You don't have any bookmarked articles.</p>
+<% end %>
+
+<h3>Read Articles</h3>
+<% if @user.has_read_bookmarks? %>
+  <div class="row">
+    <% @user.read_bookmarks.each_with_index do |bookmark, i| %>
+      <div class="col-md-4">
+        <a href="<%= bookmark.article.url %>" target="_blank">
+          <img src="/images/article-<%= bookmark.article.id%4 + 1 %>.jpg">
+          <h4><%= bookmark.article.title %></h4>
+        </a>
+        <ul>
+          <li>Byline: <%= bookmark.article.byline %></li>
+          <li>Abstract: <%= bookmark.article.abstract %></li>
+        </ul>
+        <div class="row">
+          <div class="col-md-1"></div>
+          <div class="col-md-2">
+            <form action="/bookmarks/<%= bookmark.id %>" method="post">
+              <input type="hidden" name="_method" value="delete">
+              <input type="submit" value="Remove" class="btn btn-default btn-sm">
+            </form>
+          </div>
+          <div class="col-md-2">
+            <form action="/bookmarks/<%= bookmark.id %>" method="post">
+              <input type="hidden" name="_method" value="patch">
+              <input type="hidden" name="bookmark[read]" value="false">
+              <input type="submit" value="Mark as Unread" class="btn btn-default btn-sm">
+            </form>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <p>You don't have any read articles.</p>
+<% end %>
+
+<br>

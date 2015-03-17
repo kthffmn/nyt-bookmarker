@@ -1,2 +1,4 @@
-# create your bookmark class here
-# remember to inherit from the proper ActiveRecord module
+class Bookmark < ActiveRecord::Base
+  belongs_to :user
+  belongs_to :article
+end
