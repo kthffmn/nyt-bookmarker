@@ -40,6 +40,7 @@ class UsersController < ApplicationController
 
   delete '/users/:id' do
     @user = User.find(params[:id])
+    Bookmark.delete_associated_bookmarks(@user)
     if @user.destroy
       redirect "/"
     else

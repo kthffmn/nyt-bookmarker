@@ -30,5 +30,4 @@ class User < ActiveRecord::Base
   def has_unread_bookmarks?
     unread_bookmarks.count > 0
   end
-
 end

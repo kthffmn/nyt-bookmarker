@@ -5,5 +5,5 @@ class Article < ActiveRecord::Base
   def self.unbookmarked_articles(user)
     self.where("id NOT IN (?)", user.article_ids)
   end
-
+  
 end

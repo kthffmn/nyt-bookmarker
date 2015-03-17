@@ -14,5 +14,13 @@ task :fetch do
       i += 1
     end
   end
+  if Article.count >= 500
+    until Article.count == 500
+      article = Article.first
+      Bookmark.delete_associated_bookmarks(article)
+      article.destroy
+    end
+  end
   puts "Fetch: #{i} articles added"
+  puts "#{Article.count} total articles"
 end
