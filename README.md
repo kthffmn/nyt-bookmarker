@@ -58,6 +58,14 @@ View the clip below to see what you're going for.
     Your browser does not support the video tag. We recommend using Chrome
 </video>
 
+[MP4](http://flatiron-videos.s3.amazonaws.com/ironboard/how-to-open-terminal.mp4)
+
+<video controls width="100%">
+  <source src="http://flatiron-videos.s3.amazonaws.com/ironboard/how-to-open-terminal.mp4" type="video/mp4" >
+    Your browser does not support the video tag. We recommend using Chrome
+</video>
+
+
 ## Instructions
 
 The tests are written in order of increasing difficulty so get them to pass in order. Run your testing suite to get started.
