@@ -2,6 +2,9 @@
 
 <% if @user.has_unread_bookmarks? %>
   <% @user.unread_bookmarks.each_with_index do |bookmark, i| %> 
+    <% if i % 3 == 0 %>
+      <div class="row">
+    <% end %>
     <div class="col-md-4">
       <a href="<%= bookmark.article.url %>" target="_blank" >
         <img src="/images/article-<%= bookmark.article.id%4 + 1 %>.jpg">
@@ -28,6 +31,9 @@
         </div><!-- col-md-2 -->
       </div><!-- row -->
     </div><!-- article -->
+    <% if i % 3 == 2 %>
+      </div>
+    <% end %>
   <% end %>
 <% else %>
   <p>You don't have any bookmarked articles.</p>
@@ -38,6 +44,9 @@
 
 <% if @user.has_read_bookmarks? %>
   <% @user.read_bookmarks.each_with_index do |bookmark, i| %>
+    <% if i % 3 == 0 %>
+      <div class="row">
+    <% end %>
     <div class="col-md-4">
       <a href="<%= bookmark.article.url %>" target="_blank">
         <img src="/images/article-<%= bookmark.article.id%4 + 1 %>.jpg">
@@ -64,6 +73,9 @@
         </div>
       </div><!-- row -->
     </div><!-- article -->
+    <% if i % 3 == 2 %>
+      </div>
+    <% end %>
   <% end %>
 <% else %>
   <p>You don't have any read articles.</p>
