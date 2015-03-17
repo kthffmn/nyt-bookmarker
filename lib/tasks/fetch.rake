@@ -4,9 +4,13 @@ task :fetch do
   i = 0
   data["results"].each do |article|
     title = article["title"]
-    already_exists = Article.find_by(:title => title)
-    unless already_exists
-      Article.create(article) 
+    unless Article.find_by(:title => title)
+      Article.create(
+        :title => title,
+        :byline => article["byline"],
+        :abstract => article["abstract"],
+        :url => article["url"]
+      ) 
       i += 1
     end
   end
