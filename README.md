@@ -51,7 +51,7 @@ The focus of this lab to curate lists of articles to read for users. People who 
 
 View the clip below to see what you're going for.
 
-![nyt article bookmarker app in action](https://s3-us-west-2.amazonaws.com/web-dev-readme-photos/sinatra/nyt-article-bookmarker.mov)
+[MP4](https://s3-us-west-2.amazonaws.com/web-dev-readme-photos/sinatra/nyt-article-bookmarker.mp4)
 
 ## Instructions
 
@@ -81,6 +81,26 @@ You now have two options to start your server:
 ```
 
 ## Getting Started
+
+There will be three tables and models in this lab.
+
+1. Users
+  * Users will have two attributes
+    1. name (string)
+    2. avatar (string)
+2. Articles
+  * The articles will have four attributes
+    1. title (string)
+    2. byline (string)
+    3. abstract (text)
+    4. url (string)
+3. Bookmarks
+  * Bookmarks are a join table between users and articles. They also have one other attribute, "read". This keeps track of whether the user has read the article yet or not.
+    1. article_id
+    2. user_id
+    3. read (boolean)
+
+This is a test-driven lab so run your testing suite to get started.
 
 ## Resources
 

@@ -30,6 +30,17 @@ describe "Editing and Deleting Bookmarks" do
     end
   end
 
+  it "articles/index displays only the unbookmarked articles" do
+    click_link("View Articles")
+    @bookmarks.each do |bookmark|
+      expect(page).to_not have_content(bookmark.article.title)
+      expect(page).to_not have_content(bookmark.article.byline)
+    end
+    article = Article.find_by(:title => "Hillary Clinton Tries to Quell Controversy Over Private Email")   
+    expect(page).to have_content(article.title)
+    expect(page).to have_content(article.byline)
+  end
+
   it "user/show has a button to mark unread articles as read" do
     original_unread_count = @user.bookmarks.where(:read => false).count
     original_read_count = @user.bookmarks.where(:read => true).count
