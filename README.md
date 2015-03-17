@@ -54,7 +54,7 @@ View the clip below to see what you're going for.
 [MP4](https://s3-us-west-2.amazonaws.com/web-dev-readme-photos/sinatra/nyt-article-bookmarker.mp4)
 
 <video controls width="100%">
-  <source src="https://s3-us-west-2.amazonaws.com/web-dev-readme-photos/sinatra/nyt-article-bookmarker.mp4" type="video/mp4" >
+  <source src="//s3-us-west-2.amazonaws.com/web-dev-readme-photos/sinatra/nyt-article-bookmarker.mp4" type="video/mp4" >
     Your browser does not support the video tag. We recommend using Chrome
 </video>
 
