@@ -2,38 +2,34 @@
 
 <% if @user.has_unread_bookmarks? %>
   <% @user.unread_bookmarks.each_with_index do |bookmark, i| %> 
-    <% if i % 3 == 0 %>
-      <div class="row">
-    <% end %>
-    <div class="col-md-4">
-      <a href="<%= bookmark.article.url %>" target="_blank" >
-        <img src="/images/article-<%= bookmark.article.id%4 + 1 %>.jpg">
-        <h4><%= bookmark.article.title %></h4>
-      </a>
-      <ul>
-        <li>Byline: <%= bookmark.article.byline %></li>
-        <li>Abstract: <%= bookmark.article.abstract %></li>
-      </ul>
-      <div class="row">
-        <div class="col-md-1"></div>
-        <div class="col-md-2">
-          <form action="/bookmarks/<%= bookmark.id %>" method="post">
-            <input type="hidden" name="_method" value="delete">
-            <input type="submit" value="Remove" class="btn btn-default btn-sm">
-          </form>
-        </div><!-- col-md-2 -->
-        <div class="col-md-2">
-          <form action="/bookmarks/<%= bookmark.id %>" method="post">
-            <input type="hidden" name="_method" value="patch">
-            <input type="hidden" name="bookmark[read]" value="true">
-            <input type="submit" value="Mark as Read" class="btn btn-default btn-sm">
-          </form>
-        </div><!-- col-md-2 -->
-      </div><!-- row -->
-    </div><!-- article -->
-    <% if i % 3 == 2 %>
-      </div>
-    <% end %>
+    <div class="row">
+      <div class="col-md-4">
+        <a href="<%= bookmark.article.url %>" target="_blank" >
+          <img src="/images/article-<%= bookmark.article.id%4 + 1 %>.jpg">
+          <h4><%= bookmark.article.title %></h4>
+        </a>
+        <ul>
+          <li>Byline: <%= bookmark.article.byline %></li>
+          <li>Abstract: <%= bookmark.article.abstract %></li>
+        </ul>
+        <div class="row">
+          <div class="col-md-1"></div>
+          <div class="col-md-2">
+            <form action="/bookmarks/<%= bookmark.id %>" method="post">
+              <input type="hidden" name="_method" value="delete">
+              <input type="submit" value="Remove" class="btn btn-default btn-sm">
+            </form>
+          </div><!-- col-md-2 -->
+          <div class="col-md-2">
+            <form action="/bookmarks/<%= bookmark.id %>" method="post">
+              <input type="hidden" name="_method" value="patch">
+              <input type="hidden" name="bookmark[read]" value="true">
+              <input type="submit" value="Mark as Read" class="btn btn-default btn-sm">
+            </form>
+          </div><!-- col-md-2 -->
+        </div><!-- row -->
+      </div><!-- article -->
+    </div><!-- row -->
   <% end %>
 <% else %>
   <p>You don't have any bookmarked articles.</p>
@@ -44,38 +40,34 @@
 
 <% if @user.has_read_bookmarks? %>
   <% @user.read_bookmarks.each_with_index do |bookmark, i| %>
-    <% if i % 3 == 0 %>
-      <div class="row">
-    <% end %>
-    <div class="col-md-4">
-      <a href="<%= bookmark.article.url %>" target="_blank">
-        <img src="/images/article-<%= bookmark.article.id%4 + 1 %>.jpg">
-        <h4><%= bookmark.article.title %></h4>
-      </a>
-      <ul>
-        <li>Byline: <%= bookmark.article.byline %></li>
-        <li>Abstract: <%= bookmark.article.abstract %></li>
-      </ul>
-      <div class="row">
-        <div class="col-md-1"></div>
-        <div class="col-md-2">
-          <form action="/bookmarks/<%= bookmark.id %>" method="post">
-            <input type="hidden" name="_method" value="delete">
-            <input type="submit" value="Remove" class="btn btn-default btn-sm">
-          </form>
-        </div>
-        <div class="col-md-2">
-          <form action="/bookmarks/<%= bookmark.id %>" method="post">
-            <input type="hidden" name="_method" value="patch">
-            <input type="hidden" name="bookmark[read]" value="false">
-            <input type="submit" value="Mark as Unread" class="btn btn-default btn-sm">
-          </form>
-        </div>
-      </div><!-- row -->
-    </div><!-- article -->
-    <% if i % 3 == 2 %>
-      </div>
-    <% end %>
+    <div class="row">
+      <div class="col-md-4">
+        <a href="<%= bookmark.article.url %>" target="_blank">
+          <img src="/images/article-<%= bookmark.article.id%4 + 1 %>.jpg">
+          <h4><%= bookmark.article.title %></h4>
+        </a>
+        <ul>
+          <li>Byline: <%= bookmark.article.byline %></li>
+          <li>Abstract: <%= bookmark.article.abstract %></li>
+        </ul>
+        <div class="row">
+          <div class="col-md-1"></div>
+          <div class="col-md-2">
+            <form action="/bookmarks/<%= bookmark.id %>" method="post">
+              <input type="hidden" name="_method" value="delete">
+              <input type="submit" value="Remove" class="btn btn-default btn-sm">
+            </form>
+          </div>
+          <div class="col-md-2">
+            <form action="/bookmarks/<%= bookmark.id %>" method="post">
+              <input type="hidden" name="_method" value="patch">
+              <input type="hidden" name="bookmark[read]" value="false">
+              <input type="submit" value="Mark as Unread" class="btn btn-default btn-sm">
+            </form>
+          </div>
+        </div><!-- row -->
+      </div><!-- article -->
+    </div><!-- row -->
   <% end %>
 <% else %>
   <p>You don't have any read articles.</p>

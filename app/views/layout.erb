@@ -38,6 +38,11 @@
 
                     <li class="center-this"><a href="/users/<%= @user.id %>/edit"><img src="<%= @user.avatar %>" width="50px" height="50px" class="avatar"><br>Edit Profile</a><li>
                     <li class="center-this">
+                      <a href="/users/<%= @user.id %>">
+                        View Profile
+                      </a>
+                    </li>
+                    <li class="center-this">
                       <a>
                         <form action="/users/<%= @user.id %>" method="post">
                           <input type="hidden" name="_method" value="delete">
