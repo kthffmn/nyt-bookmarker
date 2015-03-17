@@ -1,4 +1,5 @@
 <h3>Bookmarked Articles</h3>
+
 <% if @user.has_unread_bookmarks? %>
   <div class="row">
     <% @user.unread_bookmarks.each_with_index do |bookmark, i| %> 
@@ -37,6 +38,7 @@
 <% end %>
 
 <h3>Read Articles</h3>
+
 <% if @user.has_read_bookmarks? %>
   <div class="row">
     <% @user.read_bookmarks.each_with_index do |bookmark, i| %>
@@ -71,8 +73,4 @@
 <% else %>
   <p>You don't have any read articles.</p>
   <p><a class="btn btn-default" href="/users/<%= @user.id %>/articles">Add Articles</a></p>
-
 <% end %>
-
-
-
