@@ -8,6 +8,7 @@ gem 'require_all'
 gem 'pg'
 gem 'dotenv'
 gem 'font-awesome-sass'
+gem 'pry'
 
 group :test do
   gem 'rspec'

@@ -24,3 +24,7 @@ task :fetch do
   puts "Fetch: #{i} articles added"
   puts "#{Article.count} total articles"
 end
+
+task :console do 
+  Pry.start
+end
